@@ -1,0 +1,51 @@
+/* pages/bind/bind.wxss */
+.title{
+  padding: 40rpx;
+  border-bottom: solid 4rpx #8a8a8a;
+  background: white;
+  margin-top: 20rpx;
+}
+textarea{
+  padding: 20rpx;
+  margin: 20rpx;
+  padding-top: 0rpx;
+}
+button{
+  background-color: goldenrod;
+  color: white;
+  margin: 20rpx;
+}
+/*qq,手机,微信*/
+.con{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20rpx 40rpx;
+  background-color: white;
+}
+.con label{
+  width: 220rpx;
+  text-align: right;
+}
+.con input{
+  border-bottom: solid 4rpx #eeeeee;
+}
+/*补充信息*/
+.add{
+  margin: 20rpx;
+  padding: 20rpx;
+  border-top: solid 3rpx #8a8a8a;
+}
+.tip{
+  color: #8a8a8a;
+  font-size: 32rpx;
+  text-align: center;
+  margin: 20rpx;
+}
+.mark{
+  text-align: center;
+  position: fixed;
+  bottom: 52rpx;
+  width: 100%;
+  color: #cccccc;
+}

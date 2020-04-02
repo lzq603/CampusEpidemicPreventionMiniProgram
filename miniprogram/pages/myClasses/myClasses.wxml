@@ -1,0 +1,26 @@
+<!--miniprogram/pages/myClasses/myClasses.wxml-->
+<view style="clear:left;" class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text>我的班级
+  </view>
+</view>
+<view class="classesBox">
+	<view wx:for="{{myClasses}}" wx:key="index" class="classlabel">
+		<view class="text">{{item}}</view>
+		<view class="delete" data-index="{{index}}" bindtap="delete">×</view>
+	</view>
+</view>
+
+<view style="clear:left;" class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text><input bindinput="oninput" class="input" maxlength="12" placeholder="搜索添加" value=""></input>
+  </view>
+</view>
+<!-- <text class="cuIcon-title text-orange "></text><input bindinput="oninput" class="input" maxlength="12" placeholder="搜索添加" value=""></input> -->
+<view class="result">
+	<view bindtap="add" data-class_="{{item}}" style="border-top:solid 1rpx orange;margin:0 20rpx;" class="cu-bar bg-white solid-bottom" wx:for="{{class_list}}" wx:key="index">
+		<view class="action" data-class_="{{item}}">
+			<text class="cuIcon-title text-orange "></text>{{item}}<icon wx:if='{{selected[index]}}' style="float:right" type="success_no_circle"></icon>
+		</view>
+	</view>
+</view>

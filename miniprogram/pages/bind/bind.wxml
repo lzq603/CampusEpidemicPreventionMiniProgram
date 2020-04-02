@@ -1,0 +1,17 @@
+<!--pages/bind/bind.wxml-->
+<view class='title'>验证个人信息</view>
+<form bindsubmit='setMyInfo'>
+  <view class='con'>
+    <label >学号/工号：</label>
+    <input type='number' maxlength='12' name='no'></input>
+  </view>
+  <!-- 教师学院结束 -->
+  <view class='con'>
+    <label>姓名：</label>
+    <input type='text' maxlength='20' name='name'></input>
+  </view>
+  <button form-type='submit'>绑定</button>
+</form>
+<view class="mark">
+  数据已做加密处理
+</view>

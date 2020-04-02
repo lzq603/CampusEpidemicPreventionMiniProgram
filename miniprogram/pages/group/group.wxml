@@ -1,0 +1,28 @@
+<!--miniprogram/pages/group/group.wxml-->
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text> {{ group }}体温信息
+  </view>
+  <view class="action" bindtap="exportExcel">
+    <button class="cu-btn bg-green shadow">导出表格</button>
+  </view>
+</view>
+<view class="mark margin-top">
+  <view>导出可查看家庭成员体温等详细信息</view>
+</view>
+<view class="cu-list grid margin-top">
+  <view class="cu-item schedule-title" style='width: 34%;'><text>姓名</text></view>
+  <view class="cu-item schedule-title" style='width: 33%;'><text>昨天中午体温</text></view>
+  <view class="cu-item schedule-title" style='width: 33%;'><text>今天上午体温</text></view>
+  <block wx:for="{{ infos }}" wx:key="index">
+    <view class="cu-item schedule-title" style='width: 34%;'>
+      <text>{{ item.name }}</text>
+    </view>
+    <view class="cu-item schedule-title" style='width: 33%;'>
+      <text>{{ item.checked && item.temperatures.pm || '未填写' }}</text>
+    </view>
+    <view class="cu-item schedule-title" style='width: 33%;'>
+      <text>{{ item.checked && item.temperatures.am || '未填写' }}</text>
+    </view>
+  </block>
+</view>

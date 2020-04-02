@@ -1,0 +1,43 @@
+<!--pages/mycontact/mycontact.wxml-->
+<view class='title'>请输入你的个人信息</view>
+<form bindsubmit='setMyInfo'>
+  <!-- <picker bindchange='changeType' range="{{ types }}" value="{{ type_index }}"> -->
+  <view class='con'>
+    <label>身份：</label>
+    <input disabled="{{true}}" type='text' value='{{ myinfo.type }}' maxlength='20' name='type'></input>
+  </view>
+<!--   </picker> -->
+  <view class='con'>
+    <label wx:if="{{myinfo.type=='学生'}}">学号：</label>
+    <label wx:else>工号：</label>
+    <input type='number' disabled="{{true}}" value='{{ myinfo.no }}' maxlength='12' name='no'></input>
+  </view>
+  <view class='con'>
+    <label>姓名：</label>
+    <input type='text' disabled="{{true}}" value='{{ myinfo.name }}' maxlength='11' name='name'></input>
+  </view>
+  <!-- 学生班级 -->
+  <!-- <picker wx:if="{{myinfo.type=='学生'}}" mode='multiSelector' bindchange="changeClass" bindcolumnchange="bindMultiPickerColumnChange" range="{{[classes.department,classes.major[department],classes.class_[major]]}}" value="{{class_index}}"> -->
+  <view wx:if="{{myinfo.type=='学生'}}" class='con'>
+    <label>班级：</label>
+    <input type='text' disabled="{{true}}" value='{{ myinfo.class_ }}' maxlength='11' name='class_'></input>
+  </view>
+  <!-- </picker> -->
+  <!-- 学生班级结束 -->
+  <!-- 教师学院 -->
+  <!-- <picker wx:else mode='selector' bindchange="changeClass" range="{{classes.department}}" value="{{department_index}}"> -->
+  <view wx:else class='con'>
+    <label>学院：</label>
+    <input type='text' disabled="{{true}}" value='{{ myinfo.department }}' maxlength='11' name='department'></input>
+  </view>
+  <!-- </picker> -->
+  <!-- 教师学院结束 -->
+  <view class='con'>
+    <label>手机：</label>
+    <input type='text' value='{{ myinfo.phone }}' maxlength='20' name='phone'></input>
+  </view>
+  <button form-type='submit'>保存</button>
+</form>
+<view class="mark">
+  数据由学校提供
+</view>

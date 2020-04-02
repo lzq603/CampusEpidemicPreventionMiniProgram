@@ -1,0 +1,83 @@
+<!--miniprogram/pages/checkin/checkin.wxml-->
+<image bindlongtap="getMessage" class="background" src="/images/background.png"></image>
+<view  style="position: relative;top: -180rpx;">
+<view class="padding">
+  <view class="card shadow bg-white" bindtap="checkin">
+    <view class="content">
+      <view class="text-left padding text-lg">今日打卡，{{hours}}:{{minutes}}截止</view>
+      <view class="text-right padding text-xxl">
+        {{ userInfo.temperatures.am && userInfo.temperatures.pm ? '已完成' : '未完成' }}
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 建议用户绑定信息 -->
+<i-modal title="未绑定身份" visible="{{ showModal }}" bind:ok="navToMyInfo" bind:cancel="hideModal">
+    <view>正确绑定身份后</view>
+    <view>您的打卡情况才能被班级/学院统计</view>
+    <view>现在去绑定吗？</view>
+</i-modal>
+<!-- 建议用户绑定信息 End -->
+
+<block wx:if="{{ userInfo.type==='学生' }}">
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-orange"></text> 我的班级
+  </view>
+</view>
+<view class="cu-list menu card-menu margin-top">
+  <view class="cu-item arrow" bindtap="showGroup" data-class_="{{ userInfo.class_ }}">
+    <view class="content">
+      <text>查看班级体温信息</text>
+    </view>
+  </view>
+</view>
+</block>
+
+<block wx:if="{{ userInfo.type==='辅导员' || userInfo.type==='副院长' }}">
+<!-- 有了数据改为{{ userInfo.manage_classes.length }} -->
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-orange"></text> 我管理的班级
+  </view>
+  <view class="action">
+    <!-- <button bindtap="changeClass" class="cu-btn bg-green shadow">添加/删除班级</button> -->
+    <button bindtap="exportExcel" data-classes="{{userInfo.manage_classes}}" class="cu-btn bg-green shadow">导出全部</button>
+  </view>
+</view>
+<view class="cu-list menu card-menu margin-top margin-bottom">
+  <view class="cu-item arrow" bindtap="showGroup" wx:for="{{ userInfo.manage_classes }}" wx:key="index" data-class_="{{ item }}">
+    <view class="content">
+      <text>查看{{item}}班体温信息</text>
+    </view>
+  </view>
+  <view wx:if="{{ !userInfo.manage_classes.length }}" class="text-center">暂无数据</view>
+</view>
+  <!-- <view class="action margin-top" style="text-align:center;">
+    <button bindtap="exportExcel" data-classes="{{userInfo.manage_classes}}" class="cu-btn bg-green shadow">导出全部班级数据</button>
+  </view> -->
+</block>
+
+<block wx:if="{{ userInfo.type==='副院长' }}">
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-title text-orange"></text> 学院填报情况
+  </view>
+  <view class="action">
+    <button bindtap="exportExcel" class="cu-btn bg-green shadow" data-all="{{ true }}">导出学院数据</button>
+  </view>
+</view>
+<view class="cu-list menu card-menu margin-top">
+  <view class="cu-item arrow" bindtap="showGroup" data-department="{{ userInfo.department }}">
+    <view class="content">
+      <text>查看学院教职工体温信息</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap="showGroup" wx:for="{{ allClasses }}" wx:key="index" data-class_="{{ item }}">
+    <view class="content">
+      <text>查看{{item}}班体温信息</text>
+    </view>
+  </view>
+</view>
+</block>
+</view>

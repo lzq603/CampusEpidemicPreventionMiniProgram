@@ -1,0 +1,47 @@
+/* miniprogram/pages/myClasses/myClasses.wxss */
+.classesBox{
+	margin: 30rpx;
+	float: left;
+}
+.classlabel{
+	background: #999;
+	float: left;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 10rpx;
+	border-radius: 12rpx;
+	color: white;
+	margin: 10rpx;
+}
+.text{
+	float: left;
+	margin: 10rpx;
+}
+.delete{
+	width: 30rpx;
+	height: 30rpx;
+	text-align: center;
+	line-height: 30rpx;
+	border: solid 2rpx white;
+	border-radius: 15rpx;
+	background: #fefefe;
+	color: #999;
+	font-weight: 700;
+}
+.addClass{
+	clear: left;
+}
+.input{
+	background-color: white;
+	border-top: solid 1rpx #eeeeee;
+	line-height: 100rpx;
+	height: 100rpx;
+	width: 600rpx;
+}
+.icon{
+	position: absolute;
+}
+.result{
+	background: white;
+}

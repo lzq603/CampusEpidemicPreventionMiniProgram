@@ -1,0 +1,16 @@
+/* miniprogram/pages/checkin/checkin.wxss */
+
+button {
+  padding: 0;
+}
+.card {
+  border-radius: 12rpx;
+}
+.card > .content {
+  padding: 20rpx;
+}
+.background {
+  width: 750rpx;
+  height: 386rpx;
+  z-index: 0;
+}

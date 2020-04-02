@@ -1,0 +1,20 @@
+<!--miniprogram/pages/me/me.wxml-->
+<view class="avatar-bg">
+  <button
+    class="avatar"
+    style="background-image: url({{ userInfo.avatarUrl || unlogin_base64 }})"
+    open-type="getUserInfo" bindgetuserinfo="login"></button>
+  <view class="margin-top text-df">{{ userInfo.name || userInfo.nickName || '点击获取头像' }}</view>
+</view>
+
+<view class="cu-list menu card-menu margin-top">
+  <view class="cu-item arrow" bindtap="changeInfo">
+    <view class="content">
+      <text>身份绑定</text>
+    </view>
+  </view>
+</view>
+
+<view class="mark">
+  <view>每个微信号仅能绑定一人身份</view>
+</view>

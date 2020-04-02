@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/checkin/checkin",
+    "pages/form/form",
+    "pages/loading/loading",
+    "pages/myClasses/myClasses",
+    "pages/group/group",
+    "pages/me/me",
+    "pages/myinfo/myinfo",
+    "pages/bind/bind"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/checkin/checkin",
+        "text": "打卡",
+        "iconPath": "images/checkin.png",
+        "selectedIconPath": "images/checkin_fill.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me_fill.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "疫情防控",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于记录您是否在家"
+    }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx47c1fa6cacac377e"
+  ]
+}

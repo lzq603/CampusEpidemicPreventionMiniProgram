@@ -1,0 +1,262 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200223.172843.5820.0.001.json",
+    "dumpEventTime": "2020-02-23T17:28:43Z",
+    "processId": 5820,
+    "cwd": "D:\\WeChat\\zhanyi\\cloudfunctions\\excel",
+    "commandLine": [
+      "D:\\Program Files (x86)\\Tencent\\微信web开发者工具\\node.exe",
+      "C:\\Users\\Administrator\\AppData\\Local\\微信开发者工具\\User Data\\WeappCode\\package.nw\\js\\common\\cloud-functions-debugger-server\\worker\\node.js"
+    ],
+    "nodejsVersion": "v11.14.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "11.14.0",
+      "v8": "7.0.276.38-node.18",
+      "uv": "1.27.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "67",
+      "nghttp2": "1.37.0",
+      "napi": "4",
+      "llhttp": "1.1.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1b",
+      "cldr": "34.0",
+      "icu": "63.1",
+      "tz": "2018e",
+      "unicode": "11.0"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v11.14.0/node-v11.14.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v11.14.0/node-v11.14.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v11.14.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.17763",
+    "osVersion": "Windows 10 Enterprise LTSC 2019",
+    "osMachine": "x86_64",
+    "host": "PC-201908281206"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff7c6cad24e",
+      "symbol": "std::basic_ios<char,std::char_traits<char> >::fill+16366"
+    },
+    {
+      "pc": "0x00007ff7c6cac0f9",
+      "symbol": "std::basic_ios<char,std::char_traits<char> >::fill+11929"
+    },
+    {
+      "pc": "0x00007ff7c6cab923",
+      "symbol": "std::basic_ios<char,std::char_traits<char> >::fill+9923"
+    },
+    {
+      "pc": "0x00007ff7c6d9c1d2",
+      "symbol": "uv_loop_fork+89362"
+    },
+    {
+      "pc": "0x00007ff7c71c454e",
+      "symbol": "v8::internal::FatalProcessOutOfMemory+798"
+    },
+    {
+      "pc": "0x00007ff7c71c4487",
+      "symbol": "v8::internal::FatalProcessOutOfMemory+599"
+    },
+    {
+      "pc": "0x00007ff7c7277f64",
+      "symbol": "v8::internal::Heap::RootIsImmortalImmovable+14068"
+    },
+    {
+      "pc": "0x00007ff7c726dd72",
+      "symbol": "v8::internal::Heap::CollectGarbage+7234"
+    },
+    {
+      "pc": "0x00007ff7c726c588",
+      "symbol": "v8::internal::Heap::CollectGarbage+1112"
+    },
+    {
+      "pc": "0x00007ff7c7275eb7",
+      "symbol": "v8::internal::Heap::RootIsImmortalImmovable+5703"
+    },
+    {
+      "pc": "0x00007ff7c7275f36",
+      "symbol": "v8::internal::Heap::RootIsImmortalImmovable+5830"
+    },
+    {
+      "pc": "0x00007ff7c73ade01",
+      "symbol": "v8::internal::Factory::NewFillerObject+49"
+    },
+    {
+      "pc": "0x00007ff7c7467cd6",
+      "symbol": "v8::internal::StoreBuffer::StoreBufferOverflow+27190"
+    },
+    {
+      "pc": "0x000001b742850481",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 1499709440,
+    "totalCommittedMemory": 1499709440,
+    "usedMemory": 1397776120,
+    "availableMemory": 30883032,
+    "memoryLimit": 1526909922,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 524288,
+        "committedMemory": 524288,
+        "capacity": 515584,
+        "used": 33520,
+        "available": 482064
+      },
+      "new_space": {
+        "memorySize": 4194304,
+        "committedMemory": 4194304,
+        "capacity": 2062336,
+        "used": 278320,
+        "available": 1784016
+      },
+      "old_space": {
+        "memorySize": 1460342784,
+        "committedMemory": 1460342784,
+        "capacity": 1374693664,
+        "used": 1372986920,
+        "available": 1706744
+      },
+      "code_space": {
+        "memorySize": 9437184,
+        "committedMemory": 9437184,
+        "capacity": 7977536,
+        "used": 7977536,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 22032384,
+        "committedMemory": 22032384,
+        "capacity": 14667280,
+        "used": 14667280,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 3178496,
+        "committedMemory": 3178496,
+        "capacity": 28742752,
+        "used": 1832544,
+        "available": 26910208
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 0,
+        "used": 0,
+        "available": 0
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 338.281,
+    "kernelCpuSeconds": 63.468,
+    "cpuConsumptionPercent": 44.2943,
+    "maxRss": 1579401216,
+    "pageFaults": {
+      "IORequired": 705976,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 105241,
+      "writes": 1069
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=C:": "C:\\",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\Administrator",
+    "HTTP_PROXY": "http://127.0.0.1:50064",
+    "LOGONSERVER": "\\\\PC-201908281206",
+    "NODE_PATH": "D:\\WeChat\\zhanyi\\cloudfunctions\\excel",
+    "PATH": "C:\\Program Files\\Java\\jdk1.8.0_151\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\Git\\cmd;D:\\shotcut;C:\\Program Files\\CMake\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\Program Files\\ffmpeg\\bin;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\npm;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\bin",
+    "SYSTEMDRIVE": "C:",
+    "SYSTEMROOT": "C:\\Windows",
+    "TCB_CONTEXT_KEYS": "TCB_ENV",
+    "TCB_ENV": "local",
+    "TCB_SOURCE": "wx_client",
+    "TEMP": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp",
+    "TENCENTCLOUD_RUNENV": "WX_LOCAL_SCF",
+    "TENCENTCLOUD_SECRETID": "AKIDcQGZ7MI-XeARjljqd0qGXwesdtzvu7s6sQc7ii3Yto-pp5blyamvr5I_52FvSCJE",
+    "TENCENTCLOUD_SECRETKEY=aN/ZOuPE9Zuk02CniqjCZ6DU54CWm6hyJAFBax+kITw": "",
+    "TENCENTCLOUD_SESSIONTOKEN": "yUBHk1rMrTQRP9eQOnZG3CI4lArZGTZH113fa0905aa36f8602dcabbd804e2c74l3aXZ0WBUH27KDXy2QXbzpFFP0_CBYcPg1PXuzgttl2ldBHYOVn7mvqiRCKu7cam-OvAohhORCrPZpYfiODu8pXilxYUHF_AOu7W5Ds3hFQxRBBIhp60EGLcBhUkYe33_rkxZ9AdxHL-MmxIPxmyUSTi1VIz66YuBfr3ir1UvAk1SunCx4jtWGsR8fPnf-N316NVLoNBO3YQxn3TbhZvc3ZNdhVXbZ1AJ7a-nKseNEu6ioruFQYHWxU-WYfVQTXTcPDdcnfE8dJXaVPYvmyRcSvoPPIyRjQQcQzoBYFzH2kEU_rb7fznL0TxH6mitszwC5cXPySP32HjDR2f8W3yB7GmVBEUEJXvukMz2XPNFiQ",
+    "USERDOMAIN": "PC-201908281206",
+    "USERNAME": "Administrator",
+    "USERPROFILE": "C:\\Users\\Administrator",
+    "WINDIR": "C:\\Windows",
+    "WX_API_TOKEN": "eyJWZXJzaW9uIjoxLCAiS2V5VmVyc2lvbiI6OTAsICJldmVudElkIjoiSElFTU5McDJCS1RTeXFVMTZmdWNDQzRGRG41X0RzdFNjTkp1TFczckg5T2Y5amt5SHRaYTFONnAzQWNSTGlHRk9iaVBiQ2ciLCAidGlja2V0IjoiQ0U0U2dBSWMxRkJjZzhGTjBGRWI2MFZkb1FvOXlWVWhDdmxvV0tSV1lOQXkxU2N4aTdtcnh3a3d6WnlOZmM3b2RXYlVnV2NGVEtiM3ZJRG9TV2FNcTB1YzgvdGVQVGlDcHdJa3U1Qk5QUDRVcWJhbk1JNVBUTHBKdzk3NGdDdGhnMk4yTC9VWU12UEptOEpUTllNSFdOcURNd0tOSHBqY2JmM3VEek94ZnhYcXRFUEx4NVliWGE2aXk5VldhQ1ZGK1F2WGl1UkpPTUQzdzJzdHhDVkphd0RYWjdwckd4cmRUeFBlaDc4S25BVDZ1KzZzUUQ3SkI3NDdjdDRBUkZ3SVVOYXlNSkVoemo2c3JTK0hma2l6dExkc3UxZDdhU0haUHRTTkhQMlNqWVpHRXhXVDJTbWFtMUFxT05kY3JFV3c2bUpqL2dDOG1CbHJXZ0lmNWtnbmY2Y0xNWW5YSUFBPSJ9",
+    "WX_APPID": "wx4d43fa783ac24377",
+    "WX_CONTEXT_KEYS": "WX_APPID,WX_OPENID,WX_API_TOKEN",
+    "WX_OPENID": "oIGUY0YjG1HsX2JC5l4GDR5Zype4",
+    "__CF_ENV_INIT_TIME": "Sun Feb 23 2020 17:13:36 GMT+0800 (中国标准时间)",
+    "__CF_ENV_REFRESH_TIME": "Sun Feb 23 2020 17:28:16 GMT+0800 (GMT+08:00)"
+  },
+  "sharedObjects": [
+    "D:\\Program Files (x86)\\Tencent\\微信web开发者工具\\node.exe",
+    "C:\\Windows\\SYSTEM32\\ntdll.dll",
+    "C:\\Windows\\System32\\KERNEL32.DLL",
+    "C:\\Windows\\System32\\KERNELBASE.dll",
+    "C:\\Windows\\System32\\ADVAPI32.DLL",
+    "C:\\Windows\\System32\\msvcrt.dll",
+    "C:\\Windows\\System32\\sechost.dll",
+    "C:\\Windows\\System32\\RPCRT4.dll",
+    "C:\\Windows\\System32\\PSAPI.DLL",
+    "C:\\Windows\\System32\\WS2_32.dll",
+    "C:\\Windows\\System32\\USER32.dll",
+    "C:\\Windows\\System32\\win32u.dll",
+    "C:\\Windows\\System32\\GDI32.dll",
+    "C:\\Windows\\System32\\gdi32full.dll",
+    "C:\\Windows\\System32\\msvcp_win.dll",
+    "C:\\Windows\\System32\\ucrtbase.dll",
+    "C:\\Windows\\System32\\CRYPT32.dll",
+    "C:\\Windows\\System32\\MSASN1.dll",
+    "C:\\Windows\\System32\\bcrypt.dll",
+    "C:\\Windows\\SYSTEM32\\dbghelp.dll",
+    "C:\\Windows\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\Windows\\SYSTEM32\\WINMM.dll",
+    "C:\\Windows\\SYSTEM32\\USERENV.dll",
+    "C:\\Windows\\System32\\profapi.dll",
+    "C:\\Windows\\SYSTEM32\\winmmbase.dll",
+    "C:\\Windows\\System32\\cfgmgr32.dll",
+    "C:\\Windows\\System32\\IMM32.DLL",
+    "C:\\Windows\\System32\\powrprof.dll",
+    "C:\\Windows\\system32\\uxtheme.dll",
+    "C:\\Windows\\System32\\combase.dll",
+    "C:\\Windows\\System32\\bcryptPrimitives.dll",
+    "C:\\Windows\\system32\\mswsock.dll",
+    "C:\\Windows\\System32\\kernel.appcore.dll",
+    "C:\\Windows\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\Windows\\System32\\NSI.dll",
+    "C:\\Windows\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\Windows\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\Windows\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Windows\\system32\\napinsp.dll",
+    "C:\\Windows\\system32\\pnrpnsp.dll",
+    "C:\\Windows\\System32\\winrnr.dll",
+    "C:\\Windows\\system32\\NLAapi.dll",
+    "C:\\Windows\\system32\\wshbth.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\Windows\\System32\\fwpuclnt.dll"
+  ]
+}

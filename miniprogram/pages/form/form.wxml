@@ -1,0 +1,37 @@
+<!--miniprogram/pages/form/form.wxml-->
+
+<block wx:for="{{tempIndexes}}" wx:key="index">
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class="action">
+    <text class="cuIcon-titles text-green"></text>
+    <text class="text-xl text-bold">{{index==0?'我':'家庭成员'+index}}</text>
+  </view>
+</view>
+<view class="cu-form-group" wx:for="{{ ['pm', 'am'] }}" wx:for-item="time" wx:for-index="_" wx:key="*this">
+  <view class="title">{{ time==='am' ? '今天早上体温' : '昨天中午体温' }}</view>
+  <picker mode="multiSelector" bindchange="changeTemp" value="{{item[time]}}" range="{{temperature_range}}"
+    data-index="{{index}}" data-time="{{time}}">
+    <view class="picker">
+      {{temperatures[index][time] && temperatures[index][time]+'°C' || '请选择'}}
+    </view>
+  </picker>
+</view>
+<view class="cu-form-group margin-top" wx:if="{{index==0}}">
+  <view class="title">家庭其它成员人数</view>
+  <picker mode="selector" bindchange="changeNum" value="{{memberNum}}" range="{{[0,1,2,3,4,5,6,7,8]}}">
+    <view class="picker">
+      {{ memberNum }}
+    </view>
+  </picker>
+</view>
+</block>
+
+<view class="cu-form-group margin-top">
+  <view class="title">位置</view>
+  <input placeholder="未知" value="{{ location }}" disabled></input>
+  <button class="cu-btn bg-green shadow" bindtap="getLocation">点击获取</button>
+</view>
+
+<view class="cu-bar btn-group margin-top margin-bottom">
+  <button class="cu-btn bg-green shadow-blur round lg" bindtap="submit">提交</button>
+</view>

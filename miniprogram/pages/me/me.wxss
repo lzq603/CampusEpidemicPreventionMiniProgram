@@ -1,0 +1,31 @@
+/* miniprogram/pages/me/me.wxss */
+
+.avatar-bg{
+  background: grey;
+  height: 550rpx;
+  display: flex;
+  justify-content: center;
+  padding-top: 40rpx;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.avatar-bg .avatar{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+  margin: 20rpx;
+}
+.mark{
+  text-align: center;
+  position: fixed;
+  bottom: 52rpx;
+  width: 100%;
+  color: #bbbbbb;
+}

@@ -1,0 +1,7 @@
+<!--pages/loading/loading.wxml-->
+<view style="background: #f6f6f6;width:100%;text-align:center;">
+  <image mode="aspectFit" src="/images/loading.png"></image>
+</view>
+<view style="width:100%;">
+  <button open-type='getUserInfo' bindgetuserinfo='login'>进入小程序</button>
+</view>

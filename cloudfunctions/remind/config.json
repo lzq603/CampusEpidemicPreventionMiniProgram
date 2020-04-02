@@ -1,0 +1,14 @@
+{
+  "triggers": [
+    {
+      "name": "remind",
+      "type": "timer",
+      "config": "0 30 10 * * * *"
+    }
+  ],
+  "permissions": {
+    "openapi": [
+      "subscribeMessage.send"
+    ]
+  }
+}
