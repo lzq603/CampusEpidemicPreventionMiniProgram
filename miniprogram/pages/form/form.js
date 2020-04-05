@@ -25,7 +25,9 @@ Page({
       }
     ],
     location: '',
-    memberNum: 0
+    memberNum: 0,
+    hasReturneesIndex: 0,
+    hasReturnees: ''
   },
 
   /**
@@ -60,11 +62,14 @@ Page({
         }
       }
     }
+    console.log(app.globalData.userInfo.hasReturnees)
+    let hasReturnees = app.globalData.userInfo.hasReturnees || ''
     let checked = app.globalData.userInfo.last_checkin_at.toDateString() === new Date().toDateString()
     this.setData({
       memberNum: members.length - 1,
       tempIndexes,
       temperatures,
+      hasReturnees,
       location: checked && app.globalData.userInfo.location || ''
     })
   },
@@ -142,7 +147,7 @@ Page({
         console.log(err)
         wx.showModal({
           title: '位置未授权',
-          content: '根据填报要求，需要获取您的位置',
+          content: '请开启手机定位服务并授权，根据填报要求，需要获取您的位置',
           showCancel: true,
           cancelText: '取消',
           confirmText: '去授权',
@@ -163,7 +168,7 @@ Page({
     let {index, time} = e.currentTarget.dataset
     let [i, j] = e.detail.value
     this.setData({
-      [`tempIndexes[${index}].${time}]`]: [i, j],
+      [`tempIndexes[${index}].${time}`]: [i, j],
       [`temperatures[${index}].${time}`]: this.data.temperature_range[0][i] + this.data.temperature_range[1][j]
     })
   },
@@ -188,6 +193,13 @@ Page({
       temperatures
     })
   },
+  changeReturnees(e) {
+    console.log(e.detail)
+    this.setData({
+      hasReturneesIndex: e.detail.value,
+      hasReturnees: e.detail.value=='1' ? '否' :'是'
+    })
+  },
   submit() {
     const that = this
 
@@ -197,6 +209,13 @@ Page({
       }
       wx.showToast({
         title: '体温未填完',
+        icon: 'none'
+      })
+      return
+    }
+    if (!this.data.hasReturnees) {
+      wx.showToast({
+        title: '是否有回国人员？',
         icon: 'none'
       })
       return
@@ -214,10 +233,12 @@ Page({
       temperatures: it
     }))
     let last_checkin_at = new Date()
+    let hasReturnees = this.data.hasReturnees
     let location = this.data.location
     app.globalData.userInfo.temperatures = temperatures
     app.globalData.userInfo.members = members
     app.globalData.userInfo.last_checkin_at = last_checkin_at
+    app.globalData.userInfo.hasReturnees = hasReturnees
     app.globalData.userInfo.lastLocation = app.globalData.userInfo.location
     app.globalData.userInfo.location = location
     console.log(app.globalData.userInfo)
@@ -227,6 +248,7 @@ Page({
           temperatures,
           members,
           last_checkin_at,
+          hasReturnees,
           location,
           lastLocation: app.globalData.userInfo.lastLocation
         }

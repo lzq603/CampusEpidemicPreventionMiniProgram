@@ -28,6 +28,26 @@ exports.main = async (event, context) => {
     resCoun = res
     counsellorId = res.data[0]._id
   })
+
+  // 判断班里学生是否都已注册
+  let identiNum = await db.collection('identi').where({
+    userInfo: {
+      class_: _.in(resCoun.data[0].userInfo.manage_classes)
+    }
+  }).field({
+    userInfo: true
+  }).count()
+  let usersNum = await db.collection('users').where({
+    userInfo: {
+      class_: _.in(resCoun.data[0].userInfo.manage_classes)
+    }
+  }).field({
+    userInfo: true
+  }).count()
+  if(identiNum!=usersNum) {
+    return
+  }
+
   // 统计这些班级学生人数和已完成打卡的人数
   await db.collection('users').where({
     userInfo: {

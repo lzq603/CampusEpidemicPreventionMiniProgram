@@ -27,6 +27,15 @@
 </block>
 
 <view class="cu-form-group margin-top">
+  <view class="title">家庭成员是否有回国人员</view>
+  <picker mode="selector" bindchange="changeReturnees" value="{{hasReturneesIndex}}" range="{{['是','否']}}">
+    <view class="picker">
+      {{ hasReturnees || '请选择' }}
+    </view>
+  </picker>
+</view>
+
+<view class="cu-form-group margin-top">
   <view class="title">位置</view>
   <input placeholder="未知" value="{{ location }}" disabled></input>
   <button class="cu-btn bg-green shadow" bindtap="getLocation">点击获取</button>

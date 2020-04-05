@@ -6,7 +6,7 @@
     <view class="content">
       <view class="text-left padding text-lg">今日打卡，{{hours}}:{{minutes}}截止</view>
       <view class="text-right padding text-xxl">
-        {{ userInfo.temperatures.am && userInfo.temperatures.pm ? '已完成' : '未完成' }}
+        {{ checked ? '已完成' : '未完成' }}
       </view>
     </view>
   </view>
@@ -80,4 +80,5 @@
   </view>
 </view>
 </block>
+<view wx:if='{{userInfo.type!="副院长" && userInfo.type!="辅导员"}}' style="text-align:center;color:#555;position:fixed;bottom: 40rpx;width:100%;">Gitee: https://gitee.com/lzq603/tiedazhanyi</view>
 </view>

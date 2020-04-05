@@ -30,11 +30,11 @@ function gen_excel_buffer(data) {
   var worksheet_tea = workbook.addWorksheet('教师体温表',{properties:sheet_pro})
   // 添加标题
   worksheet_stu.getRow(1).values = [title,,,,,,]
-  worksheet_stu.getRow(2).values = ['学号','姓名','体温',,'班级','是否发烧', '位置',, '家庭其它成员数量']
-  worksheet_stu.getRow(3).values = ['学号','姓名','昨天中午','今天上午','班级','是否发烧', '昨天','今天', '家庭其它成员数量']
+  worksheet_stu.getRow(2).values = ['学号','姓名','体温',,'班级','是否发烧', '位置',,'家庭人员是否有回国人员', '家庭其它成员数量']
+  worksheet_stu.getRow(3).values = ['学号','姓名','昨天中午','今天上午','班级','是否发烧', '昨天','今天', '家庭人员是否有回国人员', '家庭其它成员数量']
   worksheet_tea.getRow(1).values = [title,,,,,,]
-  worksheet_tea.getRow(2).values = ['工号','姓名','体温',,'学院','是否发烧', '位置',, '家庭其它成员数量']
-  worksheet_tea.getRow(3).values = ['工号','姓名','昨天中午','今天上午','学院','是否发烧', '昨天','今天', '家庭其它成员数量']
+  worksheet_tea.getRow(2).values = ['工号','姓名','体温',,'学院','是否发烧', '位置',, '家庭人员是否有回国人员', '家庭其它成员数量']
+  worksheet_tea.getRow(3).values = ['工号','姓名','昨天中午','今天上午','学院','是否发烧', '昨天','今天', '家庭人员是否有回国人员', '家庭其它成员数量']
 
   // 定义列
   worksheet_stu.columns = [
@@ -46,6 +46,7 @@ function gen_excel_buffer(data) {
     { key: 'isFever', width: 9.5 },
     { key: 'lastLocation', width: 20 },
     { key: 'location', width: 20 },
+    { key: 'hasReturnee', width: 20},
     { key: 'familyCount', width: 16 }
   ];
   worksheet_tea.columns = [
@@ -57,10 +58,11 @@ function gen_excel_buffer(data) {
     { key: 'isFever', width: 9.5 },
     { key: 'lastLocation', width: 20 },
     { key: 'location', width: 20 },
+    { key: 'hasReturnee', width: 20},
     { key: 'familyCount', width: 16 }
   ];
   // 居中
-  for (var i = 1; i <= 7; i++) {
+  for (var i = 1; i <= 8; i++) {
     worksheet_stu.getColumn(i).alignment = {vertical: 'middle', horizontal: 'center'}
     worksheet_tea.getColumn(i).alignment = {vertical: 'middle', horizontal: 'center'}
   }
@@ -96,6 +98,7 @@ function gen_excel_buffer(data) {
       }
       arr.push(checked && data[i].userInfo.lastLocation || '未填写')
       arr.push(checked && data[i].userInfo.location || '未填写')
+      arr.push(data[i].userInfo.hasReturnees)
       arr.push(data[i].userInfo.members && data[i].userInfo.members.length || 0)
       for (let { temperatures: { am, pm } } of data[i].userInfo.members || []) {
         arr.push(checked && pm || '未填写', checked && am || '未填写')
@@ -120,6 +123,7 @@ function gen_excel_buffer(data) {
       }
       arr.push(checked && data[i].userInfo.lastLocation || '未填写')
       arr.push(checked && data[i].userInfo.location || '未填写')
+      arr.push(data[i].userInfo.hasReturnees)
       arr.push(data[i].userInfo.members && data[i].userInfo.members.length || 0)
       for (let { temperatures: { am, pm } } of data[i].userInfo.members || []) {
         arr.push(checked && pm || '未填写', checked && am || '未填写')
@@ -141,13 +145,13 @@ function gen_excel_buffer(data) {
   worksheet_stu.getRow(2).values = r2_values_stu
   worksheet_stu.getRow(3).values = r3_values_stu
   for (let i = 0; i < max_member_num_stu; ++i) {
-    worksheet_stu.mergeCells(`${String.fromCharCode('J'.charCodeAt(0) + i * 2)}2:${String.fromCharCode('J'.charCodeAt(0) + i * 2 + 1)}2`)
+    worksheet_stu.mergeCells(`${String.fromCharCode('K'.charCodeAt(0) + i * 2)}2:${String.fromCharCode('K'.charCodeAt(0) + i * 2 + 1)}2`)
   }
-  for (var i = 8; i <= 8+max_member_num_stu*2; i++) {
+  for (var i = 8; i <= 9+max_member_num_stu*2; i++) {
     worksheet_stu.getColumn(i+1).alignment = { vertical: 'middle', horizontal: 'center' }
   }
   for(let i=0;i<max_member_num_stu*2;++i) {
-    worksheet_stu.getColumn(9+1+i).width=9.5
+    worksheet_stu.getColumn(9+2+i).width=9.5
   }
 
   let r2_values_tea = worksheet_tea.getRow(2).values
@@ -159,13 +163,13 @@ function gen_excel_buffer(data) {
   worksheet_tea.getRow(2).values = r2_values_tea
   worksheet_tea.getRow(3).values = r3_values_tea
   for (let i = 0; i < max_member_num_tea; ++i) {
-    worksheet_tea.mergeCells(`${String.fromCharCode('J'.charCodeAt(0) + i * 2)}2:${String.fromCharCode('J'.charCodeAt(0) + i * 2 + 1)}2`)
+    worksheet_tea.mergeCells(`${String.fromCharCode('K'.charCodeAt(0) + i * 2)}2:${String.fromCharCode('K'.charCodeAt(0) + i * 2 + 1)}2`)
   }
-  for (var i = 8; i <= 8 + max_member_num_tea * 2; i++) {
+  for (var i = 8; i <= 9 + max_member_num_tea * 2; i++) {
     worksheet_tea.getColumn(i+1).alignment = { vertical: 'middle', horizontal: 'center' }
   }
   for(let i=0;i<max_member_num_tea*2;++i) {
-    worksheet_tea.getColumn(8+2+i).width=9.5
+    worksheet_tea.getColumn(8+3+i).width=9.5
   }
 
   // 合并单元格
@@ -177,6 +181,7 @@ function gen_excel_buffer(data) {
   worksheet_stu.mergeCells('F2:F3')
   worksheet_stu.mergeCells('G2:H2')
   worksheet_stu.mergeCells('I2:I3')
+  worksheet_stu.mergeCells('J2:J3')
   worksheet_tea.mergeCells('A1:F1')
   worksheet_tea.mergeCells('A2:A3')
   worksheet_tea.mergeCells('B2:B3')
@@ -185,6 +190,7 @@ function gen_excel_buffer(data) {
   worksheet_tea.mergeCells('F2:F3')
   worksheet_tea.mergeCells('G2:H2')
   worksheet_tea.mergeCells('I2:I3')
+  worksheet_tea.mergeCells('J2:J3')
   
   // 迭代工作表中的所有行（包括空行）
   worksheet_stu.eachRow({ includeEmpty: true }, function(row, rowNumber) {
@@ -244,6 +250,7 @@ function gen_excel_buffer(data) {
           fgColor: { argb: 'FFC000' }
         }
       }
+    }
     // console.log('Row ' + rowNumber? + ' = ' + JSON.stringify(row.values));
   });
 
@@ -265,7 +272,7 @@ exports.main = async (event, context) => {
   for (let i = 0; i < batchTimes; i++) {
     const promise = db.collection('users').where({
       userInfo:{department:event.department}
-    }).field({ 'userInfo.no': true, 'userInfo.name': true, 'userInfo.temperatures': true, 'userInfo.class_': true, 'userInfo.department': true, 'userInfo.type':true, 'userInfo.members': true, 'userInfo.last_checkin_at': true, 'userInfo.location': true }).orderBy('userInfo.no','asc').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
+    }).field({ 'userInfo.no': true, 'userInfo.name': true, 'userInfo.temperatures': true, 'userInfo.class_': true, 'userInfo.department': true, 'userInfo.type': true, 'userInfo.members': true, 'userInfo.last_checkin_at': true, 'userInfo.location': true, 'userInfo.lastLocation': true, 'userInfo.hasReturnees': true }).orderBy('userInfo.no','asc').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
     tasks.push(promise)
   }
   // 等待所有

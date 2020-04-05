@@ -50,6 +50,7 @@ exports.main = async (event, context) => {
         }
         row.push(checked && userInfo.lastLocation || '未填写')
         row.push(checked && userInfo.location || '未填写')
+        row.push(userInfo.hasReturnees)
         row.push(userInfo.members && userInfo.members.length || 0)
         for (let { temperatures: { am, pm } } of userInfo.members || []) {
           row.push(checked && pm || '未填写', checked && am || '未填写')
@@ -89,6 +90,7 @@ exports.main = async (event, context) => {
         }
         row.push(checked && userInfo.lastLocation || '未填写')
         row.push(checked && userInfo.location || '未填写')
+        row.push(userInfo.hasReturnees)
         row.push(userInfo.members && userInfo.members.length || 0)
         for (let { temperatures: { am, pm } } of userInfo.members || []) {
           row.push(checked && pm || '未填写', checked && am || '未填写')
@@ -118,12 +120,12 @@ function gen_excel_buffer(datas, isStudent, class_name) {
     // 新建工作表
     var worksheet = workbook.addWorksheet(data[0] ? data[0][4] : class_name[k], { properties: sheet_pro })
 
-    let max_member_num = Math.max(...data.map(it => it[8]))
+    let max_member_num = Math.max(...data.map(it => it[9]))
     if (isStudent) {
       // 添加标题
       worksheet.getRow(1).values = [title, , , , ,]
-      worksheet.getRow(2).values = ['学号', '姓名', '体温', , '班级', '是否发烧', '位置',, '家庭其它成员数量']
-      worksheet.getRow(3).values = ['学号', '姓名', '昨天中午', '今天上午', '班级', '是否发烧', '昨天', '今天', '家庭其它成员数量']
+      worksheet.getRow(2).values = ['学号', '姓名', '体温', , '班级', '是否发烧', '位置',,'家庭人员是否有回国人员', '家庭其它成员数量']
+      worksheet.getRow(3).values = ['学号', '姓名', '昨天中午', '今天上午', '班级', '是否发烧', '昨天', '今天', '家庭人员是否有回国人员', '家庭其它成员数量']
       // 定义列
       worksheet.columns = [
         { key: 'no', width: 9.5 },
@@ -136,8 +138,8 @@ function gen_excel_buffer(datas, isStudent, class_name) {
     } else {
       // 添加标题
       worksheet.getRow(1).values = [title, , , , ,]
-      worksheet.getRow(2).values = ['工号', '姓名', '体温', , '学院', '是否发烧', '位置',, '家庭其它成员数量']
-      worksheet.getRow(3).values = ['工号', '姓名', '昨天中午', '今天上午', '学院', '是否发烧', '昨天','今天', '家庭其它成员数量']
+      worksheet.getRow(2).values = ['工号', '姓名', '体温', , '学院', '是否发烧', '位置',, '家庭人员是否有回国人员', '家庭其它成员数量']
+      worksheet.getRow(3).values = ['工号', '姓名', '昨天中午', '今天上午', '学院', '是否发烧', '昨天','今天', '家庭人员是否有回国人员', '家庭其它成员数量']
       // 定义列
       worksheet.columns = [
         { key: 'no', width: 9.5 },
@@ -155,14 +157,16 @@ function gen_excel_buffer(datas, isStudent, class_name) {
       r2_values.push(`家庭成员${i + 1}`, '')
       r3_values.push('昨天中午', '今天上午')
     }
+
     worksheet.getRow(2).values = r2_values
     worksheet.getRow(3).values = r3_values
 
     worksheet.getColumn(7).width = 20
     worksheet.getColumn(8).width = 20
-    worksheet.getColumn(9).width = 16
+    worksheet.getColumn(9).width = 20
+    worksheet.getColumn(10).width = 16
     for(let i=0;i<max_member_num*2;++i) {
-      worksheet.getColumn(9+1+i).width=9.5
+      worksheet.getColumn(9+1+1+i).width=9.5
     }
 
     // 合并单元格
@@ -174,13 +178,14 @@ function gen_excel_buffer(datas, isStudent, class_name) {
     worksheet.mergeCells('F2:F3')
     worksheet.mergeCells('G2:H2')
     worksheet.mergeCells('I2:I3')
+    worksheet.mergeCells('J2:J3')
 
     for (let i = 0; i < max_member_num; ++i) {
-      worksheet.mergeCells(`${String.fromCharCode('A'.charCodeAt(0) + 8 + 1 + i * 2)}2:${String.fromCharCode('A'.charCodeAt(0) + 8 + 1 + i * 2 + 1)}2`)
+      worksheet.mergeCells(`${String.fromCharCode('A'.charCodeAt(0) + 8 + 2 + i * 2)}2:${String.fromCharCode('A'.charCodeAt(0) + 8 + 2 + i * 2 + 1)}2`)
     }
 
     // 居中
-    for (var i = 1; i <= 7 + 1 + max_member_num * 2; i++) {
+    for (var i = 1; i <= 7 + 2 + 1 + max_member_num * 2; i++) {
       worksheet.getColumn(i).alignment = { vertical: 'middle', horizontal: 'center' }
     }
     // 标题加粗
