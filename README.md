@@ -124,3 +124,4 @@ const tmpIdt = 'E0u3PLO8OThB8pwGhwJn68ehfYzMcBltNjQPOoEAhYY'  // 提醒辅导员
 [反馈/建议](http://120.79.54.89:8090/archives/%E9%93%81%E5%A4%A7%E9%98%B2%E6%8E%A7%E5%8F%8D%E9%A6%88)  
 或 iv2013@qq.com  
 或 QQ：603631695  
+(代部署发布，有偿)  
