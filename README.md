@@ -32,4 +32,4 @@
 [反馈/建议](http://www.crazystone.work:8090/archives/tiwen)  
 或 iv2013@qq.com  
 或 QQ：603631695  
-(代部署发布，有偿)  
+ 
